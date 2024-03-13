@@ -1,0 +1,29 @@
+
+# type := now | specific_datetime | range
+type: now
+# remark: input datetime with the MT5 timezone
+specific_datetime: "2023-12-28-09-19-00"
+start_datetime: "2023-08-01-00-00-00"
+end_datetime: "2023-08-03-00-00-00"
+
+aws:
+  # env := development | test | production
+  env: development
+  bucket: "sagemaker-ff-data-bucket"
+
+# pair := pair in PAIRS_WITH_XAU | all
+pair_list:
+  - "AUDCAD"
+
+# timeframe := timeframe in timeframes | all
+timeframe_list:
+  - "H4"
+  - "D1"
+  - "W1"
+
+data_fetching_step:
+  job_name: on_demand_data_fetching
+  local_data_base_path: "./mt5_data"
+  mt5_file_path: C:\Program Files\MetaTrader 5\terminal64.exe
+  s3_output_base_path: "s3://sagemaker-ff-data-bucket/datalake_dev/MT5/"
+

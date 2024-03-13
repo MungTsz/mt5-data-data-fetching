@@ -1,0 +1,23 @@
+# type := now | specific_datetime | range
+type: now
+
+aws:
+  # env := development | test | production
+  env: development
+  bucket: "sagemaker-ff-data-bucket"
+
+# pair := pair in PAIRS_WITH_XAU | all
+pair_list:
+  - all
+
+# timeframe := timeframe in timeframes | all
+timeframe_list:
+  - "H4"
+  - "D1"
+  - "W1"
+
+data_fetching_step:
+  job_name: schedule_data_fetching
+  local_data_base_path: "./mt5_data"
+  mt5_file_path: C:\Program Files\MetaTrader 5\terminal64.exe
+  s3_output_base_path: "s3://sagemaker-ff-data-bucket/datalake_dev/MT5/"
